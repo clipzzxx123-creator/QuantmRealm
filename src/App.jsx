@@ -297,7 +297,7 @@ export default function App() {
               className="group flex items-center gap-3 rounded-full bg-white px-6 py-2.5 text-[11px] font-black text-black shadow-xl shadow-white/5 transition-all duration-300 hover:bg-zinc-200 active:scale-95"
             >
               <DiscordIcon size={16} />
-              <span className="tracking-[0.1em]">DISCORD</span>
+              <span className="tracking-[0.1em] text-black">DISCORD</span>
             </a>
           </div>
         </div>
@@ -342,6 +342,9 @@ export default function App() {
           <section key={section.id} id={section.id} className="scroll-mt-32">
             <div className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div className="max-w-xl space-y-6">
+                <p className="text-[10px] font-black uppercase tracking-[0.6em] text-white/40">
+                  {section.title}
+                </p>
                 <h3 className="text-6xl font-black tracking-tight">{section.title}</h3>
                 <p className="text-lg font-medium leading-relaxed text-zinc-500">{section.description}</p>
               </div>
