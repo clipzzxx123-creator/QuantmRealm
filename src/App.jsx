@@ -366,7 +366,12 @@ export default function App() {
 
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {[1, 2, 3].map((item) => (
-                <PortfolioItem key={item} title={`${section.title} Concept`} />
+                <div key={item} className="space-y-4">
+                  <p className="text-center text-[10px] font-black uppercase tracking-[0.35em] text-white/50">
+                    {`${section.title} ${item}`}
+                  </p>
+                  <PortfolioItem title={`${section.title} Concept`} />
+                </div>
               ))}
             </div>
           </section>
