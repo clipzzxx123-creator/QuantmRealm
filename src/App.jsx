@@ -192,7 +192,6 @@ export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const [activeSection, setActiveSection] = useState('hero');
-  const [sectionLabel, setSectionLabel] = useState('');
   const sections = [
     { id: 'pfp', title: 'PFP', icon: <Camera size={18} />, description: 'High-impact profile identifiers.' },
     { id: 'banners', title: 'BANNERS', icon: <Palette size={18} />, description: 'Cinematic social media headers.' },
@@ -213,8 +212,6 @@ export default function App() {
         }
       });
       setActiveSection(current);
-      const currentSec = sections.find((s) => s.id === current);
-      setSectionLabel(currentSec ? currentSec.title : '');
     };
 
     let timeout;
@@ -266,15 +263,8 @@ export default function App() {
             className="group flex cursor-pointer items-center gap-4"
             onClick={(event) => scrollToSection(event, section.id)}
           >
+            <div className={`h-1 rounded-full transition-all duration-500 ${activeSection === section.id ? 'w-8 bg-white' : 'w-4 bg-white/20 group-hover:bg-white/40'}`} />
             <span className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 ${activeSection === section.id ? 'translate-x-0 text-white' : '-translate-x-2 text-white/20 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}>
-                <div className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none hidden md:flex">
-                  <div className="text-center">
-                    <p className="text-[10px] font-black uppercase tracking-[0.6em] text-white/20">Current Section</p>
-                    <h2 className="mt-4 text-8xl font-black tracking-tighter text-white/5 transition-all duration-500">{sectionLabel}</h2>
-                  </div>
-                </div>
-
-                <div className={`fixed left-8 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-8 transition-opacity duration-500 xl:flex ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
               {section.title}
             </span>
           </div>
